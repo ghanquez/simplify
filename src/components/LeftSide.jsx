@@ -35,13 +35,18 @@ const Profile = styled.div`
 
 const Infos = styled.div`margin-left: 15px;`;
 
+const imgRootPath =
+  "https://rawgit.com/Kribou/simplify/66983ce6e4242211f2b05d1417435c35b26145d4/src/img/";
+
+const members = ["1033", "694", "565", "3", "468"];
+
 export default class LeftSide extends React.Component {
-  constructor(props) {
+  /* constructor(props) {
     super(props);
     this.state = { members: [] };
-  }
+  } */
 
-  addARandomImage = () => {
+  /* addARandomImage = () => {
     const width = 30;
     const height = 30;
     const urlToFetch = `https://picsum.photos/${width}/${height}/?random`;
@@ -50,20 +55,20 @@ export default class LeftSide extends React.Component {
         return { members: [...previousState.members, response.url] };
       });
     });
-  };
+  }; */
 
-  componentWillMount() {
+  /* componentWillMount() {
     for (let i = 0; i < 5; i++) {
       this.addARandomImage();
     }
-  }
+  } */
 
   render() {
-    const { members } = this.state;
+    //const { members } = this.state;
     return (
       <Panel>
         <button>Add Task</button>
-        <Block title="RECENT">
+        <Block title="RECENT" height={200}>
           <div>
             <FaUser />Profile
           </div>
@@ -82,10 +87,11 @@ export default class LeftSide extends React.Component {
           </div>
         </Block>
         {members ? (
-          <Block title="TEAM">
+          <Block title="TEAM" height={50}>
             <Profile>
               {members.map((member, idx) => {
-                return <img alt={member} key={idx} src={member} />;
+                const path = `${imgRootPath}/${member}.jpg`;
+                return <img title={path} alt={path} key={idx} src={path} />;
               })}
               <Infos>+ 35 more</Infos>
             </Profile>
