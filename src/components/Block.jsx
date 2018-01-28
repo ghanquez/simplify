@@ -20,12 +20,12 @@ export default class Block extends React.Component {
     });
   };
 
-  computeStyle = () => {
+  computeStyle = itemsCount => {
     const { collapsed } = this.state;
     let style = {};
 
     if (collapsed) {
-      style.height = this.props.height + "px";
+      style.height = itemsCount * 50 + "px";
     } else {
       style.height = 0;
     }
@@ -38,6 +38,11 @@ export default class Block extends React.Component {
 
   render() {
     const { title } = this.props;
+    let itemsCount = 0;
+    if (this.props.children) {
+      itemsCount = this.props.children.length || 1;
+    }
+
     return (
       <div>
         <TitleRow onClick={this.toggle} className="titleRow">
@@ -46,7 +51,7 @@ export default class Block extends React.Component {
             <FaEllipsisH />
           </div>
         </TitleRow>
-        <div style={this.computeStyle()}>
+        <div style={this.computeStyle(itemsCount)}>
           {/*collapsed ? this.props.children : null*/}
           {this.props.children}
         </div>

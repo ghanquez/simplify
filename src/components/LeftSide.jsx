@@ -9,6 +9,9 @@ import FaSliders from "react-icons/lib/fa/sliders";
 import FaCalendar from "react-icons/lib/fa/calendar";
 import ErrorBoundary from "../util/ErrorBoundary";
 
+const backgroundColor = "#280264";
+const buttonBackgroundColor = "#5760FF";
+
 const Panel = styled.div`
   height: 100%;
   width: 390px;
@@ -17,6 +20,23 @@ const Panel = styled.div`
   border-right: 1px solid black;
   line-height: 50px;
 `;
+
+const Header = styled.div`
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  button {
+    text-align: center;
+    background-color: ${buttonBackgroundColor};
+    color: white;
+    width: 60%;
+    height: 50px;
+    border: none;
+    box-shadow: 0 2px 20px -2px ${buttonBackgroundColor};
+  }
+`;
+
+const Blocks = styled.div``;
 
 const Profile = styled.div`
   width: 100%;
@@ -67,36 +87,29 @@ export default class LeftSide extends React.Component {
     //const { members } = this.state;
     return (
       <Panel>
-        <button>Add Task</button>
-        <Block title="RECENT" height={200}>
-          <div>
-            <FaUser />Profile
-          </div>
-          <div>
-            <FaInBox />Tasks
-          </div>
-
-          <div>
-            <FaShareAlt />Shared Items
-          </div>
-          <div>
-            <FaSliders />Admin Dash
-          </div>
-          <div>
-            <FaCalendar /> Calendar
-          </div>
-        </Block>
-        {members ? (
-          <Block title="TEAM" height={50}>
-            <Profile>
-              {members.map((member, idx) => {
-                const path = `${imgRootPath}/${member}.jpg`;
-                return <img title={path} alt={path} key={idx} src={path} />;
-              })}
-              <Infos>+ 35 more</Infos>
-            </Profile>
+        <Header style={{ textAlign: "center" }}>
+          <button>Add Task</button>
+        </Header>
+        <Blocks>
+          <Block title="RECENT">
+            <BlockItem icon={<FaUser />}>Profile</BlockItem>
+            <BlockItem icon={<FaInBox />}>Tasks</BlockItem>
+            <BlockItem icon={<FaShareAlt />}>Shared Items</BlockItem>
+            <BlockItem icon={<FaSliders />}>Admin Dash</BlockItem>
+            <BlockItem icon={<FaCalendar />}>Calendar</BlockItem>
           </Block>
-        ) : null}
+          {members ? (
+            <Block title="TEAM">
+              <Profile>
+                {members.map((member, idx) => {
+                  const path = `${imgRootPath}/${member}.jpg`;
+                  return <img title={path} alt={path} key={idx} src={path} />;
+                })}
+                <Infos>+ 35 more</Infos>
+              </Profile>
+            </Block>
+          ) : null}
+        </Blocks>
       </Panel>
     );
   }
