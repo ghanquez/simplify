@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import FaSearch from 'react-icons/lib/fa/search';
-import { FormGroup, InputGroup, FormControl } from 'react-bootstrap';
 import theme from '../config/theme';
 
 const Panel = styled.div`

@@ -1,16 +1,13 @@
-import * as React from "react";
-import styled from "styled-components";
-import Block from "./Block";
-import BlockItem from "./BlockItem";
-import FaUser from "react-icons/lib/fa/user";
-import FaInBox from "react-icons/lib/fa/inbox";
-import FaShareAlt from "react-icons/lib/fa/share-alt";
-import FaSliders from "react-icons/lib/fa/sliders";
-import FaCalendar from "react-icons/lib/fa/calendar";
-import ErrorBoundary from "../util/ErrorBoundary";
-
-const backgroundColor = "#280264";
-const buttonBackgroundColor = "#5760FF";
+import * as React from 'react';
+import styled from 'styled-components';
+import Block from './Block';
+import BlockItem from './BlockItem';
+import FaUser from 'react-icons/lib/fa/user';
+import FaInBox from 'react-icons/lib/fa/inbox';
+import FaShareAlt from 'react-icons/lib/fa/share-alt';
+import FaSliders from 'react-icons/lib/fa/sliders';
+import FaCalendar from 'react-icons/lib/fa/calendar';
+import theme from '../config/theme';
 
 const Panel = styled.div`
   height: 100%;
@@ -26,13 +23,12 @@ const Header = styled.div`
   margin-bottom: 20px;
 
   button {
-    text-align: center;
-    background-color: ${buttonBackgroundColor};
+    background-color: ${theme.global.button.backgroundColor};
     color: white;
     width: 60%;
-    height: 50px;
+    height: auto;
     border: none;
-    box-shadow: 0 2px 20px -2px ${buttonBackgroundColor};
+    box-shadow: 0 2px 20px -2px ${theme.global.button.backgroundColor};
   }
 `;
 
@@ -56,9 +52,9 @@ const Profile = styled.div`
 const Infos = styled.div`margin-left: 15px;`;
 
 const imgRootPath =
-  "https://rawgit.com/Kribou/simplify/66983ce6e4242211f2b05d1417435c35b26145d4/src/img/";
+  'https://rawgit.com/Kribou/simplify/66983ce6e4242211f2b05d1417435c35b26145d4/src/img/';
 
-const members = ["1033", "694", "565", "3", "468"];
+const members = ['1033', '694', '565', '3', '468'];
 
 export default class LeftSide extends React.Component {
   /* constructor(props) {
@@ -87,7 +83,7 @@ export default class LeftSide extends React.Component {
     //const { members } = this.state;
     return (
       <Panel>
-        <Header style={{ textAlign: "center" }}>
+        <Header style={{ textAlign: 'center' }}>
           <button>Add Task</button>
         </Header>
         <Blocks>
@@ -98,17 +94,17 @@ export default class LeftSide extends React.Component {
             <BlockItem icon={<FaSliders />}>Admin Dash</BlockItem>
             <BlockItem icon={<FaCalendar />}>Calendar</BlockItem>
           </Block>
-          {members ? (
-            <Block title="TEAM">
-              <Profile>
-                {members.map((member, idx) => {
-                  const path = `${imgRootPath}/${member}.jpg`;
-                  return <img title={path} alt={path} key={idx} src={path} />;
-                })}
-                <Infos>+ 35 more</Infos>
-              </Profile>
-            </Block>
-          ) : null}
+          {members
+            ? <Block title="TEAM">
+                <Profile>
+                  {members.map((member, idx) => {
+                    const path = `${imgRootPath}/${member}.jpg`;
+                    return <img title={path} alt={path} key={idx} src={path} />;
+                  })}
+                  <Infos>+ 35 more</Infos>
+                </Profile>
+              </Block>
+            : null}
         </Blocks>
       </Panel>
     );
