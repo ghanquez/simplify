@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 class TaskDecription extends React.Component {
-    render() {
-        return <div>TaskDecription</div>;
-    }
+  render() {
+    return <div>{this.props.children}</div>;
+  }
 }
 
 export default TaskDecription;
