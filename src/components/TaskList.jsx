@@ -2,6 +2,7 @@ import * as React from 'react';
 import FaCheckSquareO from 'react-icons/lib/fa/check-square-o';
 import styled from 'styled-components';
 import theme from '../config/theme';
+import Task from './Task';
 
 /* {
   status: 'PENDING',
@@ -68,17 +69,7 @@ export default class TaskList extends React.Component {
     return (
       <div>
         {tasks.map((task, idx) => {
-          const { progress, description, status, date } = task;
-          return (
-            <div key={idx}>
-              <Header task={task} />
-              <Description description={description} />
-              <Footer>
-                <ProgressBar progress={progress} />
-                <FaCheckSquareO />
-              </Footer>
-            </div>
-          );
+          return <Task key={idx} task={task} />;
         })}
       </div>
     );

@@ -12,6 +12,7 @@ import theme from '../config/theme';
 const Panel = styled.div`
   height: 100%;
   width: 390px;
+  min-width: 80px;
   display: flex;
   flex-direction: column;
   border-right: 1px solid black;
