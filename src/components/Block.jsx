@@ -2,6 +2,8 @@ import * as React from "react";
 import styled from "styled-components";
 import FaEllipsisH from "react-icons/lib/fa/ellipsis-h";
 
+const animationTime = "0.2s";
+
 const TitleRow = styled.div`
   display: flex;
   flew-direction: row;
@@ -30,7 +32,7 @@ export default class Block extends React.Component {
       style.height = 0;
     }
 
-    style.transition = "height 0.05s ease-out";
+    style.transition = `height ${animationTime} ease-out`;
     style.overflow = "hidden";
 
     return style;
