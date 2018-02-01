@@ -9,7 +9,7 @@ const Panel = styled.div`
 
 class Header extends React.Component {
   render() {
-    return <div>Header</div>;
+    return <div>//TODO: add icons here</div>;
   }
 }
 

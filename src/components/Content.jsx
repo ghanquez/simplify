@@ -8,6 +8,7 @@ import TaskAttachment from "./content/TaskAttachment";
 import TaskComments from "./content/TaskComments";
 import TaskFollowers from "./content/TaskFollowers";
 import Reminders from "./content/Reminders";
+import reminders from "../data/reminders";
 
 const Panel = styled.div`width: 100%;`;
 
@@ -19,7 +20,7 @@ const selectedTask = {
     "The monkey-rope is found in all whalers; but it was only in the Pequod that the monkey. Tousled food polaroid, salvia bespoke small batch Pinterest Marfa. Fingertache authentic craft beer, food truck Banksy Carles kale chips...",
   attachments: ["Files.zip"],
   comments: [],
-  followers: []
+  followers: ["KO", "LO", "DA"]
 };
 
 export default class Content extends React.Component {
@@ -43,8 +44,8 @@ export default class Content extends React.Component {
         <TaskAttachment attachments={attachments} />
         <hr />
         <TaskComments />
-        <TaskFollowers />
-        <Reminders />
+        <TaskFollowers followers={followers} />
+        <Reminders reminders={reminders} />
       </Panel>
     );
   }
