@@ -1,6 +1,9 @@
 import * as React from "react";
 import styled from "styled-components";
 import FaEllipsisH from "react-icons/lib/fa/ellipsis-h";
+import FaClockO from "react-icons/lib/fa/clock-o";
+import FaPlus from "react-icons/lib/fa/plus";
+import members from "../../data/members";
 
 const defaultColor = "#7451C0";
 
@@ -34,16 +37,43 @@ const Infos = styled.div`
   color: ${defaultColor};
 `;
 
-const Members = styled.div``;
+const Members = styled.div`
+  margin-left: 10px;
+  margin-right: 10px;
+  border-bottom: 1px solid ${defaultColor};
+`;
 
 const Ellipsis = styled(FaEllipsisH)`
   font-size: smaller;
   color: ${defaultColor};
 `;
 
+const MembersHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;
+`;
+
+const Profile = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  img {
+    border-radius: 50%;
+    border: 2px solid white;
+    position: relative;
+    margin-left: -10px;
+    left: 10px;
+  }
+`;
+
 export default class Reminder extends React.Component {
   render() {
-    const { title, email, date, members } = this.props.reminder;
+    const { title, email, date } = this.props.reminder;
     return (
       <ReminderPanel>
         <Header>
@@ -52,14 +82,29 @@ export default class Reminder extends React.Component {
         </Header>
         <Infos>
           <div>{email}</div>
-          <div>{date}</div>
+          <div>
+            <FaClockO style={{ color: "#A89BFF" }} />
+            {date}
+          </div>
         </Infos>
 
         <Members>
-          <div>
-            {members.length} member{members.length > 1 ? "s" : ""}
-          </div>
-          <div>{members}</div>
+          <MembersHeader>
+            <div>
+              {members.length} member{members.length > 1 ? "s" : ""}
+            </div>
+            <div>
+              <FaPlus />
+            </div>
+          </MembersHeader>
+          <MembersHeader>
+            <Profile>
+              {members.map((member, idx) => {
+                return <img src={member} alt={member} />;
+              })}
+            </Profile>
+            <div>+5 more</div>
+          </MembersHeader>
         </Members>
       </ReminderPanel>
     );

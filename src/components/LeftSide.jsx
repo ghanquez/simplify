@@ -1,13 +1,15 @@
-import * as React from 'react';
-import styled from 'styled-components';
-import Block from './Block';
-import BlockItem from './BlockItem';
-import FaUser from 'react-icons/lib/fa/user';
-import FaInBox from 'react-icons/lib/fa/inbox';
-import FaShareAlt from 'react-icons/lib/fa/share-alt';
-import FaSliders from 'react-icons/lib/fa/sliders';
-import FaCalendar from 'react-icons/lib/fa/calendar';
-import theme from '../config/theme';
+import * as React from "react";
+import styled from "styled-components";
+import Block from "./Block";
+import BlockItem from "./BlockItem";
+import FaUser from "react-icons/lib/fa/user";
+import FaInBox from "react-icons/lib/fa/inbox";
+import FaShareAlt from "react-icons/lib/fa/share-alt";
+import FaSliders from "react-icons/lib/fa/sliders";
+import FaCalendar from "react-icons/lib/fa/calendar";
+import theme from "../config/theme";
+import members from "../data/members";
+import { DropdownButton, MenuItem, ButtonToolbar } from "react-bootstrap";
 
 const Panel = styled.div`
   height: 100%;
@@ -22,15 +24,16 @@ const Panel = styled.div`
 const Header = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
+  width: 100%;
+`;
 
-  button {
-    background-color: ${theme.global.button.backgroundColor};
-    color: white;
-    width: 60%;
-    height: auto;
-    border: none;
-    box-shadow: 0 2px 20px -2px ${theme.global.button.backgroundColor};
-  }
+const MyButton = styled.button`
+  background-color: ${theme.global.button.backgroundColor};
+  color: white;
+  width: 60%;
+  height: auto;
+  border: none;
+  box-shadow: 0 2px 20px -2px ${theme.global.button.backgroundColor};
 `;
 
 const Blocks = styled.div``;
@@ -52,10 +55,10 @@ const Profile = styled.div`
 
 const Infos = styled.div`margin-left: 15px;`;
 
-const imgRootPath =
-  'https://rawgit.com/Kribou/simplify/66983ce6e4242211f2b05d1417435c35b26145d4/src/img/';
-
-const members = ['1033', '694', '565', '3', '468'];
+const MyDropdownButton = styled(DropdownButton)`
+  background-color: transparent;
+  width: 100%;
+`;
 
 export default class LeftSide extends React.Component {
   /* constructor(props) {
@@ -81,11 +84,33 @@ export default class LeftSide extends React.Component {
   } */
 
   render() {
+    const BUTTONS = ["Simplify"];
     //const { members } = this.state;
     return (
       <Panel>
-        <Header style={{ textAlign: 'center' }}>
-          <button>Add Task</button>
+        <Header style={{ textAlign: "center" }}>
+          <ButtonToolbar>
+            {BUTTONS.map((title, i) => {
+              return (
+                <MyDropdownButton
+                  bsStyle={title}
+                  title={title}
+                  key={i}
+                  id={`dropdown-basic-${i}`}
+                >
+                  <MenuItem eventKey="1">Action</MenuItem>
+                  <MenuItem eventKey="2">Another action</MenuItem>
+                  <MenuItem eventKey="3" active>
+                    Active Item
+                  </MenuItem>
+                  <MenuItem divider />
+                  <MenuItem eventKey="4">Separated link</MenuItem>
+                </MyDropdownButton>
+              );
+            })}
+          </ButtonToolbar>
+          <hr />
+          <MyButton>Add Task</MyButton>
         </Header>
         <Blocks>
           <Block title="RECENT">
@@ -95,17 +120,16 @@ export default class LeftSide extends React.Component {
             <BlockItem icon={<FaSliders />}>Admin Dash</BlockItem>
             <BlockItem icon={<FaCalendar />}>Calendar</BlockItem>
           </Block>
-          {members
-            ? <Block title="TEAM">
-                <Profile>
-                  {members.map((member, idx) => {
-                    const path = `${imgRootPath}/${member}.jpg`;
-                    return <img title={path} alt={path} key={idx} src={path} />;
-                  })}
-                  <Infos>+ 35 more</Infos>
-                </Profile>
-              </Block>
-            : null}
+          {members ? (
+            <Block title="TEAM">
+              <Profile>
+                {members.map((path, idx) => {
+                  return <img title={path} alt={path} key={idx} src={path} />;
+                })}
+                <Infos>+ 35 more</Infos>
+              </Profile>
+            </Block>
+          ) : null}
         </Blocks>
       </Panel>
     );
