@@ -1,8 +1,8 @@
-import * as React from "react";
-import styled from "styled-components";
-import FaEllipsisH from "react-icons/lib/fa/ellipsis-h";
+import * as React from 'react';
+import styled from 'styled-components';
+import FaEllipsisH from 'react-icons/lib/fa/ellipsis-h';
 
-const animationTime = "0.2s";
+const animationTime = '0.2s';
 
 const TitleRow = styled.div`
   display: flex;
@@ -11,6 +11,10 @@ const TitleRow = styled.div`
   margin-left: 20px;
   margin-right: 20px;
   cursor: pointer;
+`;
+
+const Title = styled.div`
+  color: #a2a5ff;
 `;
 
 export default class Block extends React.Component {
@@ -27,13 +31,13 @@ export default class Block extends React.Component {
     let style = {};
 
     if (collapsed) {
-      style.height = itemsCount * 50 + "px";
+      style.height = itemsCount * 50 + 'px';
     } else {
       style.height = 0;
     }
 
     style.transition = `height ${animationTime} ease-out`;
-    style.overflow = "hidden";
+    style.overflow = 'hidden';
 
     return style;
   };
@@ -48,10 +52,10 @@ export default class Block extends React.Component {
     return (
       <div>
         <TitleRow onClick={this.toggle} className="titleRow">
-          <div>{title}</div>
-          <div>
+          <Title>{title}</Title>
+          <Title>
             <FaEllipsisH />
-          </div>
+          </Title>
         </TitleRow>
         <div style={this.computeStyle(itemsCount)}>
           {/*collapsed ? this.props.children : null*/}
