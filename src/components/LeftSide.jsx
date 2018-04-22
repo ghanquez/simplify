@@ -37,10 +37,10 @@ const HeaderRow = styled.div`
 
 const MyButton = styled.button`
   background-color: ${theme.global.button.backgroundColor};
+  border-color: ${theme.global.button.backgroundColor};
   color: white;
-  width: 60%;
-  height: auto;
-  border: none;
+  width: 70%;
+  line-height: 30px;
   box-shadow: 0 2px 15px -1px ${theme.global.button.backgroundColor};
 `;
 
@@ -67,10 +67,18 @@ const Infos = styled.div`
 
 const MyDropdownButton = styled(DropdownButton)`
   background-color: transparent;
-  width: 300px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+`;
+
+const Separator = styled('div')`
+  background-color: ${theme.constrast.backgroundColor};
+  height: 1px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5px;
+  margin-bottom: 30px;
 `;
 
 export default class LeftSide extends React.Component {
@@ -116,7 +124,7 @@ export default class LeftSide extends React.Component {
               <MenuItem eventKey="4">Separated link</MenuItem>
             </MyDropdownButton>
           </HeaderRow>
-          <hr />
+          <Separator />
           <MyButton>Add Task</MyButton>
         </Header>
         <Blocks>
