@@ -1,20 +1,22 @@
-import * as React from "react";
-import styled from "styled-components";
-import Block from "./Block";
-import BlockItem from "./BlockItem";
-import FaUser from "react-icons/lib/fa/user";
-import FaInBox from "react-icons/lib/fa/inbox";
-import FaShareAlt from "react-icons/lib/fa/share-alt";
-import FaSliders from "react-icons/lib/fa/sliders";
-import FaCalendar from "react-icons/lib/fa/calendar";
-import theme from "../config/theme";
-import members from "../data/members";
-import { DropdownButton, MenuItem, ButtonToolbar } from "react-bootstrap";
+import * as React from 'react';
+import styled from 'styled-components';
+import Block from './Block';
+import BlockItem from './BlockItem';
+import FaUser from 'react-icons/lib/fa/user';
+import FaInBox from 'react-icons/lib/fa/inbox';
+import FaShareAlt from 'react-icons/lib/fa/share-alt';
+import FaSliders from 'react-icons/lib/fa/sliders';
+import FaCalendar from 'react-icons/lib/fa/calendar';
+import theme from '../config/theme';
+import members from '../data/members';
+import { DropdownButton, MenuItem, ButtonToolbar } from 'react-bootstrap';
+
+const leftSideWidth = 220;
 
 const Panel = styled.div`
   height: 100%;
-  width: 390px;
-  min-width: 80px;
+  width: ${leftSideWidth}px;
+  min-width: ${leftSideWidth}px;
   display: flex;
   flex-direction: column;
   border-right: 1px solid black;
@@ -27,13 +29,19 @@ const Header = styled.div`
   width: 100%;
 `;
 
+const HeaderRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
+
 const MyButton = styled.button`
   background-color: ${theme.global.button.backgroundColor};
   color: white;
   width: 60%;
   height: auto;
   border: none;
-  box-shadow: 0 2px 20px -2px ${theme.global.button.backgroundColor};
+  box-shadow: 0 2px 15px -1px ${theme.global.button.backgroundColor};
 `;
 
 const Blocks = styled.div``;
@@ -53,11 +61,16 @@ const Profile = styled.div`
   }
 `;
 
-const Infos = styled.div`margin-left: 15px;`;
+const Infos = styled.div`
+  margin-left: 15px;
+`;
 
 const MyDropdownButton = styled(DropdownButton)`
   background-color: transparent;
-  width: 100%;
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export default class LeftSide extends React.Component {
@@ -84,31 +97,25 @@ export default class LeftSide extends React.Component {
   } */
 
   render() {
-    const BUTTONS = ["Simplify"];
-    //const { members } = this.state;
     return (
       <Panel>
-        <Header style={{ textAlign: "center" }}>
-          <ButtonToolbar>
-            {BUTTONS.map((title, i) => {
-              return (
-                <MyDropdownButton
-                  bsStyle={title}
-                  title={title}
-                  key={i}
-                  id={`dropdown-basic-${i}`}
-                >
-                  <MenuItem eventKey="1">Action</MenuItem>
-                  <MenuItem eventKey="2">Another action</MenuItem>
-                  <MenuItem eventKey="3" active>
-                    Active Item
-                  </MenuItem>
-                  <MenuItem divider />
-                  <MenuItem eventKey="4">Separated link</MenuItem>
-                </MyDropdownButton>
-              );
-            })}
-          </ButtonToolbar>
+        <Header style={{ textAlign: 'center' }}>
+          <HeaderRow>
+            <MyDropdownButton
+              bsStyle={'simplify'}
+              title={<div>Simplify</div>}
+              key={0}
+              id={`dropdown-basic-0`}
+            >
+              <MenuItem eventKey="1">Action</MenuItem>
+              <MenuItem eventKey="2">Another action</MenuItem>
+              <MenuItem eventKey="3" active>
+                Active Item
+              </MenuItem>
+              <MenuItem divider />
+              <MenuItem eventKey="4">Separated link</MenuItem>
+            </MyDropdownButton>
+          </HeaderRow>
           <hr />
           <MyButton>Add Task</MyButton>
         </Header>
