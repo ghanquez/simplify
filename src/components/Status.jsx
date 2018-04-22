@@ -1,33 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import theme from '../config/theme';
+
 class Status extends React.Component {
   computeBackgroundColor(status) {
-    if (status === 'PENDING') {
-      return 'red';
-    } else if (status === 'DELAYED') {
-      return 'yellow';
-    } else if (status === 'IN PROGRESS') {
-      return 'blue';
-    }
+    return theme.tasks.status.backgroundColor[status];
   }
 
   computeColor(status) {
-    if (status === 'PENDING') {
-      return '#910027';
-    } else if (status === 'DELAYED') {
-      return '#946000';
-    } else if (status === 'IN PROGRESS') {
-      return '#1C6166';
-    }
+    return theme.tasks.status.color[status];
   }
 
   render() {
     const { status } = this.props;
     const Panel = styled.div`
-  background-color: ${this.computeBackgroundColor(status)};
-  color: ${this.computeColor(status)};
-  `;
+      background-color: ${this.computeBackgroundColor(status)};
+      color: ${this.computeColor(status)};
+      border-radius: 2px;
+      padding: 5px 20px;
+    `;
     return <Panel>{status}</Panel>;
   }
 }
