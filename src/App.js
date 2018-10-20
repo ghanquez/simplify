@@ -4,7 +4,6 @@ import Tasks from './components/Tasks';
 import Content from './components/Content';
 import styled from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css';
 import theme from './config/theme';
 
 const Row = styled.div`
