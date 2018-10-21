@@ -7,7 +7,7 @@ class TaskComments extends React.Component {
   render() {
     return (
       <div>
-        <img style={{ borderRadius: "50%" }} src={commentImgPath} />
+        <img style={{ borderRadius: "50%" }} src={commentImgPath} alt={'comment'}/>
       </div>
     );
   }

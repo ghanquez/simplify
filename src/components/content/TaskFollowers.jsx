@@ -69,7 +69,7 @@ export default class TaskFollowers extends React.Component {
             <FaPlus />
           </AddAFollower>
         </FollowersPanel>
-        <a style={{ textDecoration: "underline" }}>Follow Task</a>
+        <a style={{ textDecoration: "underline" }} href="/">Follow Task</a>
       </Panel>
     );
   }

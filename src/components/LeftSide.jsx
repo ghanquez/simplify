@@ -9,7 +9,7 @@ import FaSliders from 'react-icons/lib/fa/sliders';
 import FaCalendar from 'react-icons/lib/fa/calendar';
 import theme from '../config/theme';
 import members from '../data/members';
-import { DropdownButton, MenuItem, ButtonToolbar } from 'react-bootstrap';
+import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 const leftSideWidth = 220;
 
