@@ -11,7 +11,7 @@
     "handlebars": "^4.5.3",
     "is-my-json-valid": "^2.17.2",
     "js-yaml": "^3.13.1",
-    "lodash": "^4.17.13",
+    "lodash": "^4.17.19",
     "lodash.template": "^4.5.0",
     "macaddress": "^0.2.9",
     "merge": "^1.2.1",
