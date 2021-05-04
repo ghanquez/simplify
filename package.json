@@ -14,7 +14,7 @@
     "lodash": "^4.17.13",
     "lodash.template": "^4.5.0",
     "macaddress": "^0.2.9",
-    "merge": "^1.2.1",
+    "merge": "^2.1.1",
     "nwmatcher": "^1.4.4",
     "querystringify": "^2.0.0",
     "react": "16.0.0",
